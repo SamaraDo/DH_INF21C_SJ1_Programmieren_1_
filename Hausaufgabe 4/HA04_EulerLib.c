@@ -43,7 +43,7 @@ void eulerSettings_MSD(simHandle* handle){
     /*reserve storage for init state vec*/
     
     /* YOUR CODE HERE */
-    handle->stateVecInit = malloc(sizeof(double) * (handle->numOfStates));
+    handle->stateVecInit = (double*)malloc(sizeof(double) * (handle->numOfStates));
     /* ---------------*/ 
     
     /*get user defined Simtime*/
@@ -110,13 +110,13 @@ void eulerSettings_MSD(simHandle* handle){
     
     /* YOUR CODE HERE */
     int integratorSteps = (int)ceil(handle->simTime/handle->stepSize);
-    handle->stateVec = malloc(sizeof(double) * (integratorSteps)*2); 
+    handle->stateVec = (double*)malloc(sizeof(double) * (integratorSteps)*2); 
     /* ---------------*/
 
     /*init states and derivatives with zero*/
     
     /* YOUR CODE HERE */
-    handle->derivStateVec = malloc(sizeof(double) * (integratorSteps)*2);  
+    handle->derivStateVec = (double*)malloc(sizeof(double) * (integratorSteps)*2);  
     /* ---------------*/
 }
 
@@ -188,4 +188,3 @@ void showResults_MSD(simHandle* handle){
     fclose(gnuPlotPipe);
     /* ---------------*/
 }
-
